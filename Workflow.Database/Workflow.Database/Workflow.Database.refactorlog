@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="adcf35b3-6735-4180-a298-d18fda1a860d" ChangeDateTime="01/14/2025 14:15:55">
+    <Property Name="ElementName" Value="[dbo].[tbl_Users].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="iUserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="69c1b99b-65cc-46a5-8c17-100c576161c7" ChangeDateTime="01/14/2025 14:19:41">
+    <Property Name="ElementName" Value="[dbo].[tbl_Users].[vc]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="vcHashedPassword" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9e5c314a-3d5c-4f14-acdd-5d0239f6d7de" ChangeDateTime="01/14/2025 14:26:50">
+    <Property Name="ElementName" Value="[dbo].[tbl_Project].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Project]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="iProjectId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="927568fc-2aa9-4853-ac25-cd89048ce228" ChangeDateTime="01/14/2025 14:27:50">
+    <Property Name="ElementName" Value="[dbo].[tbl_User_vcUsername]" />
+    <Property Name="ElementType" Value="SqlUniqueConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[tbl_User_UK_vcUsername]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a801e935-4e7e-4857-828c-34ecd6e0e2b5" ChangeDateTime="01/14/2025 14:27:59">
+    <Property Name="ElementName" Value="[dbo].[tbl_User_vcEmail]" />
+    <Property Name="ElementType" Value="SqlUniqueConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[tbl_User_UK_vcEmail]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d225a6c1-7f63-4aff-af74-a400bcd76d59" ChangeDateTime="01/14/2025 14:30:10">
+    <Property Name="ElementName" Value="[dbo].[tbl_UserProject].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_UserProject]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="iUserProjectId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="516a03fb-a2b7-46cb-8ac1-ea6459abe502" ChangeDateTime="01/14/2025 14:32:34">
+    <Property Name="ElementName" Value="[dbo].[tbl_UserProject].[i]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_UserProject]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="iProjectId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aba640ae-1a4d-4b25-b898-1e042d61bc82" ChangeDateTime="01/14/2025 14:44:44">
+    <Property Name="ElementName" Value="[dbo].[tbl_TaskItem].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_TaskItem]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="iTaskId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="062a0ba7-f29d-4327-89c5-c94d3c599d8f" ChangeDateTime="01/14/2025 14:55:05">
+    <Property Name="ElementName" Value="[dbo].[tbl_Token].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_Token]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="iTokenId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ee06f4e4-5065-4db0-924a-3d6bb7e01aa3" ChangeDateTime="01/14/2025 15:01:29">
+    <Property Name="ElementName" Value="[dbo].[tbl_UserProject_UK_iProjectId_iUserId]" />
+    <Property Name="ElementType" Value="SqlUniqueConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_UserProject]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[tbl_UserProject_UC_iProjectId_iUserId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="84458998-6c19-4f19-849c-a6291240cbbc" ChangeDateTime="01/14/2025 15:01:40">
+    <Property Name="ElementName" Value="[dbo].[tbl_User_UK_vcUsername]" />
+    <Property Name="ElementType" Value="SqlUniqueConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[tbl_User_UC_vcUsername]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a6a1699c-3ff1-4323-a961-44076093a84d" ChangeDateTime="01/14/2025 15:01:48">
+    <Property Name="ElementName" Value="[dbo].[tbl_User_UK_vcEmail]" />
+    <Property Name="ElementType" Value="SqlUniqueConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[tbl_User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[tbl_User_UC_vcEmail]" />
+  </Operation>
+</Operations>
