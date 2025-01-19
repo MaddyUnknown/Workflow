@@ -23,7 +23,7 @@ namespace Workflow.API.Infrastructure.Web.Controllers
 
 
         [HttpGet("all")]
-        public async Task<ActionResult<IPaginatedList<ProjectDetails>>> GetPaginatedProjects(int pageSize, int pageNumber )
+        public async Task<ActionResult<IPaginatedList<ProjectDetails>>> GetPaginatedProjects(int pageSize, int pageNumber)
         {
             ProjectSearch search = new ProjectSearch { PageNumber = pageNumber, PageSize = pageSize };
             return Ok(await _projectService.GetProjects(search));
@@ -39,6 +39,20 @@ namespace Workflow.API.Infrastructure.Web.Controllers
         public async Task<ActionResult<ProjectDetails>> CreateProject(ProjectCreate project)
         {
             return Ok(await _projectService.CreateProject(project));
+        }
+
+        [HttpPost("{id}/add-member")]
+        public async Task<ActionResult<IEnumerable<ProjectMemberDetails>>> AddProjectMember(long id, ProjectMemberAdd addProjectUser)
+        {
+            addProjectUser.ProjectId = id;
+            return Ok(await _projectService.AddProjectMember(addProjectUser));
+        }
+
+        [HttpPost("{id}/remove-member")]
+        public async Task<ActionResult<IEnumerable<ProjectMemberDetails>>> RemoveProjectMember(long id, ProjectMemberRemove removeProjectUser)
+        {
+            removeProjectUser.ProjectId = id;
+            return Ok(await _projectService.RemoveProjectMember(removeProjectUser));
         }
     }
 }

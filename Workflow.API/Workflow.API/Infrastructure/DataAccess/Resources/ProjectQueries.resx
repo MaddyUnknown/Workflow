@@ -122,9 +122,24 @@
 OUTPUT INSERTED.iProjectId 
 VALUES (@Title)</value>
   </data>
-  <data name="ADD_PROJECT_OWNER" xml:space="preserve">
+  <data name="ADD_PROJECT_USER" xml:space="preserve">
     <value>INSERT INTO tbl_UserProject (iProjectId, iUserId, bIsOwner) 
 VALUES (@ProjectId, @UserId, @IsOwner)</value>
+  </data>
+  <data name="DELETE_PROJECT_USER" xml:space="preserve">
+    <value>DELETE FROM tbl_UserProject
+WHERE iProjectId = @ProjectId AND iUserId = @UserId</value>
+  </data>
+  <data name="GET_ALL_MEMBER_BY_PROJECT_ID" xml:space="preserve">
+    <value>SELECT
+	u.iUserId Id,
+	u.vcName Name,
+	u.vcUsername Username,
+	u.vcEmail Email,
+	up.bIsOwner IsOwner
+FROM tbl_UserProject up
+INNER JOIN tbl_User u ON u.iUserId = up.iUserId
+WHERE up.iProjectId = @ProjectId</value>
   </data>
   <data name="GET_ALL_USER_PROJECTS" xml:space="preserve">
     <value>SELECT DISTINCT 
@@ -150,6 +165,17 @@ OFFSET @SkipRows ROWS FETCH NEXT @FetchRows ROWS ONLY</value>
 FROM tbl_Project p
 INNER JOIN tbl_UserProject up ON up.iProjectId = p.iProjectId
 WHERE up.iUserId = @UserId and p.iProjectId = @ProjectId</value>
+  </data>
+  <data name="GET_MEMBER_BY_PROJECT_ID_USER_ID" xml:space="preserve">
+    <value>SELECT
+	u.iUserId Id,
+	u.vcName Name,
+	u.vcUsername Username,
+	u.vcEmail Email,
+	up.bIsOwner IsOwner
+FROM tbl_UserProject up
+INNER JOIN tbl_User u ON u.iUserId = up.iUserId
+WHERE up.iProjectId = @ProjectId AND up.iUserId = @UserId</value>
   </data>
   <data name="GET_USER_PROJECT_COUNT" xml:space="preserve">
     <value>SELECT 

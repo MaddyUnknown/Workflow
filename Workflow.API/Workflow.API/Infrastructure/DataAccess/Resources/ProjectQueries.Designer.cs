@@ -75,9 +75,36 @@ namespace Workflow.API.Infrastructure.DataAccess.Resources {
         ///   Looks up a localized string similar to INSERT INTO tbl_UserProject (iProjectId, iUserId, bIsOwner) 
         ///VALUES (@ProjectId, @UserId, @IsOwner).
         /// </summary>
-        internal static string ADD_PROJECT_OWNER {
+        internal static string ADD_PROJECT_USER {
             get {
-                return ResourceManager.GetString("ADD_PROJECT_OWNER", resourceCulture);
+                return ResourceManager.GetString("ADD_PROJECT_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM tbl_UserProject
+        ///WHERE iProjectId = @ProjectId AND iUserId = @UserId.
+        /// </summary>
+        internal static string DELETE_PROJECT_USER {
+            get {
+                return ResourceManager.GetString("DELETE_PROJECT_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT
+        ///	u.iUserId Id,
+        ///	u.vcName Name,
+        ///	u.vcUsername Username,
+        ///	u.vcEmail Email,
+        ///	up.bIsOwner IsOwner
+        ///FROM tbl_UserProject up
+        ///INNER JOIN tbl_User u ON u.iUserId = up.iUserId
+        ///WHERE up.iProjectId = @ProjectId.
+        /// </summary>
+        internal static string GET_ALL_MEMBER_BY_PROJECT_ID {
+            get {
+                return ResourceManager.GetString("GET_ALL_MEMBER_BY_PROJECT_ID", resourceCulture);
             }
         }
         
@@ -121,6 +148,23 @@ namespace Workflow.API.Infrastructure.DataAccess.Resources {
         internal static string GET_BY_USER_ID_PRODUCT_ID {
             get {
                 return ResourceManager.GetString("GET_BY_USER_ID_PRODUCT_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT
+        ///	u.iUserId Id,
+        ///	u.vcName Name,
+        ///	u.vcUsername Username,
+        ///	u.vcEmail Email,
+        ///	up.bIsOwner IsOwner
+        ///FROM tbl_UserProject up
+        ///INNER JOIN tbl_User u ON u.iUserId = up.iUserId
+        ///WHERE up.iProjectId = @ProjectId AND up.iUserId = @UserId.
+        /// </summary>
+        internal static string GET_MEMBER_BY_PROJECT_ID_USER_ID {
+            get {
+                return ResourceManager.GetString("GET_MEMBER_BY_PROJECT_ID_USER_ID", resourceCulture);
             }
         }
         

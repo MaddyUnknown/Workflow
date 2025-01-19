@@ -1,7 +1,9 @@
 ﻿using Dapper;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using Workflow.API.Core.Collections;
 using Workflow.API.Core.Entities;
+using Workflow.API.Core.Entities.Aggregates;
 using Workflow.API.Core.Interfaces.Collections;
 using Workflow.API.Core.Interfaces.Repositories;
 using Workflow.API.Core.Models.Options;
@@ -51,10 +53,22 @@ namespace Workflow.API.Infrastructure.DataAccess.Repositories
             } 
         }
 
-        public async Task<bool> HasProjectAccess(long projectId, long userId)
+        public async Task<IEnumerable<ProjectMember>> GetProjectMembersByProjectId(long projectId)
         {
-            var project = await GetByUserIdAndProjectId(userId, projectId);
-            return project == null ? false : true;
+            using (var conn = new SqlConnection(_connectionStr))
+            {
+                IEnumerable<ProjectMember> members = await conn.QueryAsync<ProjectMember>(ProjectQueries.GET_ALL_MEMBER_BY_PROJECT_ID, new { ProjectId = projectId });
+                return members;
+            }
+        }
+
+        public async Task<bool> HasProjectAccess(long projectId, long userId, ProjectAccessSearchOptions? options = null)
+        {
+            using (var conn = new SqlConnection(_connectionStr))
+            {
+                var member = await conn.QueryFirstOrDefaultAsync<ProjectMember>(ProjectQueries.GET_MEMBER_BY_PROJECT_ID_USER_ID, new { ProjectId = projectId, UserId = userId });
+                return (member == null || (options?.CheckIfOwner == true && member.IsOwner == false)) ? false : true;
+            }
         }
 
         public async Task<Project> AddWithOwnerUserId(long ownerUserId, Project proj)
@@ -68,7 +82,7 @@ namespace Workflow.API.Infrastructure.DataAccess.Repositories
                     try
                     {
                         long projectId = await conn.QuerySingleAsync<long>(ProjectQueries.ADD_PROJECT, proj, transaction);
-                        await conn.ExecuteAsync(ProjectQueries.ADD_PROJECT_OWNER, new { ProjectId = projectId, UserId = ownerUserId, IsOwner = true }, transaction);
+                        await conn.ExecuteAsync(ProjectQueries.ADD_PROJECT_USER, new { ProjectId = projectId, UserId = ownerUserId, IsOwner = true }, transaction);
 
                         await transaction.CommitAsync();
 
@@ -82,7 +96,22 @@ namespace Workflow.API.Infrastructure.DataAccess.Repositories
                     }
                 }
             }
+        }
 
+        public async Task AddProjectMember(long projectId, long userId)
+        {
+            using (var conn = new SqlConnection(_connectionStr))
+            {
+                await conn.ExecuteAsync(ProjectQueries.ADD_PROJECT_USER, new { ProjectId = projectId, UserId = userId, IsOwner = false });
+            }
+        }
+
+        public async Task RemoveProjectMember(long projectId, long userId)
+        {
+            using (var conn = new SqlConnection(_connectionStr))
+            {
+                await conn.ExecuteAsync(ProjectQueries.DELETE_PROJECT_USER, new { ProjectId = projectId, UserId = userId });
+            }
         }
     }
 }

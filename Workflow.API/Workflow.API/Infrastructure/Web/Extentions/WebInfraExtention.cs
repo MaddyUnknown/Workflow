@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using System.Text.Json.Serialization;
 using Workflow.API.Core.Interfaces.Security.Accessors;
 using Workflow.API.Infrastructure.Application.Models;
 using Workflow.API.Infrastructure.Web.Accessors;
@@ -18,6 +19,7 @@ namespace Workflow.API.Infrastructure.Web.Extentions
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             });
 
             services.AddSingleton<IUserContextAccessor, UserContextAccessor>();

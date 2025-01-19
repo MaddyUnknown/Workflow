@@ -10,5 +10,8 @@ namespace Workflow.API.Application.Interfaces.Services
         Task<IPaginatedList<ProjectDetails>> GetProjects(ProjectSearch search);
         Task<ProjectDetailsAggregate> GetProjectDetails(long projectId);
         Task<ProjectDetails> CreateProject(ProjectCreate project);
+        Task<IEnumerable<ProjectMemberDetails>> AddProjectMember(ProjectMemberAdd addMember);
+        Task<IEnumerable<ProjectMemberDetails>> RemoveProjectMember(ProjectMemberRemove removeMember);
+
     }
 }
