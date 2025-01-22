@@ -1,0 +1,22 @@
+@if(IsUserLoggedIn) {
+    <!-- User badge -->
+    <button class="user-badge">
+        <div class="container-user-pic">
+            <div class="user-profile-pic-initial">
+                {{LoggedInUser.name[0].toUpperCase()}}
+            </div>
+        </div>
+    </button>
+
+    <!-- User menu -->
+    <div class="section-user-menu">
+        <ul class="container-user-menu">
+            <li class="user-greating">Hello, 
+                <span class="user-name">{{LoggedInUser.name}}</span>
+            </li>
+            <li class="user-menu-item logout">
+                Logout
+            </li>
+        </ul>
+    </div>
+}

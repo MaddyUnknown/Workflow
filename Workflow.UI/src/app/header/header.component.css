@@ -1,0 +1,23 @@
+:host {
+    display: block;
+    margin: 2.4rem 1.2rem 0 1.2rem;
+}
+
+.container-header {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-website-logo>img {
+    height: 5.2rem;
+}
+
+.container-website-logo>img.i2{
+    height: 4.2rem;
+}
+
+.nav-menu {
+    list-style: none;
+}
