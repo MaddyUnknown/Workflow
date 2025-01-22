@@ -1,11 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/cdk/overlay-prebuilt.css';
+
 :root {
     --primary-color: #415A5E;
     --primary-color-high-contract: #36454F;
     --secondary-color: #6C969D;
 
     --background-color: #FFF;
-    --backgroun-color-low-contrast: #CCCCCC;
+    --background-color-hover: #EEE;
+
+    --border-color-low-contrast: #CCCCCC;
 
     --text-color: #1c2225;
     --text-color-lowest-contract: #FFF;

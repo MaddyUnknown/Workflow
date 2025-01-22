@@ -1,6 +1,6 @@
 @if(IsUserLoggedIn) {
     <!-- User badge -->
-    <button class="user-badge">
+    <button class="user-badge" [cdkMenuTriggerFor]="userMenu">
         <div class="container-user-pic">
             <div class="user-profile-pic-initial">
                 {{LoggedInUser.name[0].toUpperCase()}}
@@ -9,14 +9,21 @@
     </button>
 
     <!-- User menu -->
-    <div class="section-user-menu">
-        <ul class="container-user-menu">
-            <li class="user-greating">Hello, 
-                <span class="user-name">{{LoggedInUser.name}}</span>
-            </li>
-            <li class="user-menu-item logout">
-                Logout
-            </li>
-        </ul>
-    </div>
+    <ng-template #userMenu>
+        <div class="section-user-menu" cdkMenu>
+            <ul class="container-user-menu">
+                <li class="user-greating user-menu-item user-menu-item-deactive">Hello, 
+                    <span class="user-name">{{LoggedInUser.name}}</span>
+                </li>
+                <li>
+                    <button class="user-menu-item" cdkMenuItem>Logout</button>
+                </li>
+            </ul>
+        </div>
+            
+    </ng-template>
+} 
+@else {
+    <button>Login</button>
+    <button>Register</button>
 }

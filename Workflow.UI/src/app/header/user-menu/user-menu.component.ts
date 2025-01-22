@@ -1,11 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthUserService } from '../../services/auth-user.service';
 import { User } from '../../models/user.model';
+import { CdkMenuModule } from '@angular/cdk/menu';
 
 @Component({
   selector: 'app-user-menu',
   standalone: true,
-  imports: [],
+  imports: [CdkMenuModule],
   templateUrl: './user-menu.component.html',
   styleUrl: './user-menu.component.css'
 })
