@@ -1,6 +1,10 @@
 @if(IsUserLoggedIn) {
     <!-- User badge -->
-    <button class="user-badge" [cdkMenuTriggerFor]="userMenu">
+    <button class="user-badge" [cdkMenuTriggerFor]="userMenu"
+        [cdkMenuPosition]="[
+            { originX: 'end', originY: 'bottom', overlayX: 'end', overlayY: 'top' }
+        ]"
+    >
         <div class="container-user-pic">
             <div class="user-profile-pic-initial">
                 {{LoggedInUser.name[0].toUpperCase()}}
