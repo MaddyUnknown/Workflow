@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuthUserService } from '../../services/auth-user.service';
 import { User } from '../../models/user.model';
 import { CdkMenuModule } from '@angular/cdk/menu';
@@ -11,22 +11,18 @@ import { CdkMenuModule } from '@angular/cdk/menu';
   styleUrl: './user-menu.component.css'
 })
 export class UserMenuComponent implements OnInit {
-  private _authUserService: AuthUserService;
-  
-  constructor(authUserService: AuthUserService) {
-    this._authUserService = authUserService;
-  }
+  private _authUserService = inject(AuthUserService);
 
   ngOnInit(): void {
     
   }
 
-  get IsUserLoggedIn(): boolean {
-    return this._authUserService.IsAuthenticated;
+  protected get isUserLoggedIn(): boolean {
+    return this._authUserService.isAuthenticated;
   }
 
-  get LoggedInUser(): User {
-    return this._authUserService.User;
+  protected get loggedInUser(): User {
+    return this._authUserService.user;
   }
 
 }

@@ -1,0 +1,103 @@
+.header-project-list {
+    margin-bottom: 2.4rem;
+
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/*
+* Search box
+*/
+
+/* Container for the search box */
+.container-search {
+    cursor: text;
+
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+
+    margin-bottom: 1.6rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.4rem;
+    border: 0.1rem solid var(--color-border-muted);
+    
+    background-color: var(--color-bg);
+
+
+
+}
+  
+/* Highlight the entire search box when focused */
+.container-search:focus-within {
+    outline: 0.2rem solid black;
+}
+
+.container-search>ng-icon {
+    font-size: 1.8rem;
+    color: var(--color-icon-muted);
+}
+
+.container-search input {
+    border: none;
+    outline: none;
+
+    width: 100%;
+    
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: 1.6rem;
+
+    font-family: var(--font-style-default);
+
+}
+
+.container-search input::placeholder {
+    color: var(--color-text-muted-tint-40);
+}
+
+/*
+* Project list
+*/
+
+.container-project-list {
+    list-style: none;
+}
+
+.container-project-list>li {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    
+    padding: 0.8rem 1.6rem 0.8rem 2rem;
+    margin-bottom: 0.2rem;
+
+    border-radius: 0.4rem;
+}
+
+.container-project-list>li::before {
+    content: '';
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+
+    border-radius: 50%; 
+
+    background-color: var(--color-icon-muted-tink-40);
+}
+
+.container-project-list>li:hover {
+    background-color: var(--color-bg-hover-default);
+}
+
+.container-project-list>li.active::before {
+    background-color: var(--color-secondary);
+}
+
+.message-no-project {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 1.4rem;
+}

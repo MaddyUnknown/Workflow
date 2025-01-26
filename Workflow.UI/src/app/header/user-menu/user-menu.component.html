@@ -1,4 +1,4 @@
-@if(IsUserLoggedIn) {
+@if(isUserLoggedIn) {
     <!-- User badge -->
     <button class="user-badge" [cdkMenuTriggerFor]="userMenu"
         [cdkMenuPosition]="[
@@ -7,7 +7,7 @@
     >
         <div class="container-user-pic">
             <div class="user-profile-pic-initial">
-                {{LoggedInUser.name[0].toUpperCase()}}
+                {{loggedInUser.name[0].toUpperCase()}}
             </div>
         </div>
     </button>
@@ -17,7 +17,7 @@
         <div class="section-user-menu" cdkMenu>
             <ul class="container-user-menu">
                 <li class="user-greating user-menu-item user-menu-item-deactive">Hello, 
-                    <span class="user-name">{{LoggedInUser.name}}</span>
+                    <span class="user-name">{{loggedInUser.name}}</span>
                 </li>
                 <li>
                     <button class="user-menu-item" cdkMenuItem>Logout</button>

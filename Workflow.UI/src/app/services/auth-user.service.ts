@@ -11,11 +11,11 @@ export class AuthUserService {
         this._loggedInUser = {id: 1, name: 'Mehdi Hossain', username: 'mehdih'};
     }
 
-    get IsAuthenticated(): boolean {
+    get isAuthenticated(): boolean {
         return this._isAuthenticated;
     }
 
-    get User(): User {
+    get user(): User {
         return this._isAuthenticated ? Object.freeze(this._loggedInUser!) : EMPTY_USER;
     }
 }

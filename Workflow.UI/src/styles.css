@@ -1,22 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/cdk/overlay-prebuilt.css';
-
-:root {
-    --primary-color: #415A5E;
-    --primary-color-high-contract: #36454F;
-    --secondary-color: #6C969D;
-
-    --background-color: #FFF;
-    --background-color-hover: #EEE;
-
-    --border-color-low-contrast: #CCCCCC;
-
-    --text-color: #1c2225;
-    --text-color-lowest-contract: #FFF;
-    --text-color-grey: #666;
-
-}
-
+@import './styles/fonts.css';
+@import './styles/colors.css';
 
 * {
     box-sizing: border-box;
@@ -29,15 +14,17 @@ html {
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+
+    margin: 0 1.2rem;
 
     font-size: 1.6rem;
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-style-default);
 }
 
 .container {
     margin: 0 auto;
-    max-width: 160rem;
+    max-width: 140rem;
     width: 100%;
 }

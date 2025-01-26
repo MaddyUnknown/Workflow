@@ -1,0 +1,15 @@
+<h2 class="header-project-list">Projects</h2>
+<div class="container-search" (click)="projectSearch.focus()">
+    <ng-icon name="ionSearch"></ng-icon>
+    <input type="text" name="search-keyword" placeholder="Search..." #projectSearch />
+</div>
+<div class="container-project">
+    <ul class="container-project-list">
+        @for(project of projectList; track project.id) {
+            <li [class.active]="project.id == selectedProjectId" (click)="onProjectChange(project.id)">{{project.name}}</li>
+        }
+        @empty { 
+            <div class="message-no-project">No project found</div>
+        }
+    </ul>
+</div>
